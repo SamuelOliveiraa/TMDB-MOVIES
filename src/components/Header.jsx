@@ -26,7 +26,7 @@ function Header() {
     <div className="bg-zinc-900 px-6">
       <header className="max-w-7xl mx-auto py-4 flex items-center justify-between">
         <nav>
-          <Link to="/" className="flex items-center gap-1 text-2xl text-yellow-300">
+          <Link to="/TMDB-MOVIES" className="flex items-center gap-1 text-2xl text-yellow-300">
             <BiCameraMovie />
             <span>MoviesLib</span>
           </Link>
