@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/TMDB-MOVIES" element={<Home />} />
         <Route path="/movie/:id" element={<Movie />} />
         <Route path="/search" element={<Search />} />
         <Route path="*" element={<NotFound />} />
