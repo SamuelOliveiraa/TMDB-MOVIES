@@ -5,6 +5,12 @@ export default {
     extend: {
       gridTemplateColumns: {
         "auto-fit-minmax": "repeat(auto-fit, minmax(250px, 1fr))"
+      },
+      width: {
+        248: "248px"
+      },
+      height: {
+        372: "372px"
       }
     }
   },

@@ -1,6 +1,6 @@
 class API {
   static async get() {
-    const data = await fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=acef416ba094cca22bc2cb7888b92b61");
+    const data = await fetch("https://api.themoviedb.org/3/discover/movie?api_key=acef416ba094cca22bc2cb7888b92b61");
     const res = await data.json();
     return res.results;
   }
