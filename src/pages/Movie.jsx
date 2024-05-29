@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { FaStar } from "react-icons/fa6";
+/* import { FaStar } from "react-icons/fa6"; */
 import { CircularProgress } from "@mui/material";
 import API from "../utils/API";
 
@@ -18,45 +18,40 @@ function Movies() {
     }
     fetchData();
   }, [id]);
-  console.log(movie)
+  console.log(movie);
 
   return (
-    <div className="flex items-center justify-center max-w-lg mx-auto mt-20 ">
+    <div className="flex items-center justify-center max-w-5xl mx-auto mt-20 pb-20">
       {movie ? (
-        <div>
-          <div className="flex flex-col items-center gap-2 text-xl">
-            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.original_title} />
-            <h1>{movie.original_title}</h1>
-            <span className="my-2 flex items-center gap-2">
-              <FaStar className="text-yellow-400" /> Stars
-            </span>
-            <p>{movie.tagline}</p>
-          </div> 
-          <div className="w-full mt-9">
-            <div>
-              <span className="my-2 flex items-center gap-2">
-                <FaStar className="text-yellow-400" /> Orçamento:
-              </span>
-              <p>{movie.budget}</p>
-            </div>
-            <div>
-              <span className="my-2 flex items-center gap-2">
-                <FaStar className="text-yellow-400" /> Receita:
-              </span>
-              <p>{movie.revenue}</p>
-            </div>
-            <div>
-              <span className="my-2 flex items-center gap-2">
-                <FaStar className="text-yellow-400" /> Duração:
-              </span>
-              <p>{movie.runtime}</p>
-            </div>
-            <div>
-              <span className="my-2 flex items-center gap-2">
-                <FaStar className="text-yellow-400" /> Descrição:
-              </span>
-              <p>{movie.overview}</p>
-            </div>
+        <div className="w-full ">
+          <div className="mb-10">
+            <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt="" className="w-full rounded-3xl" />
+          </div>
+          <div className="flex">
+          <div className="flex ">
+            <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" />
+          </div>
+          <div>
+            <h2>{movie.original_title}</h2>
+            <p>{movie.overview}</p>
+            <span>{movie.vote_average.toFixed(1)}</span>
+            <p>
+              <span>Type</span>
+              Movie
+            </p>
+            <p>
+              <span>Release Date</span>
+              {movie.release_date}
+            </p>
+            <p>
+              <span>Run time</span>
+              {`${movie.runtime} min`}
+            </p>
+            <p>
+              <span>Genres</span>
+              {movie.genres.map(genre => genre.name)}
+            </p>
+          </div>
           </div>
         </div>
       ) : (

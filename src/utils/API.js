@@ -1,6 +1,6 @@
 class API {
-  static async get() {
-    const data = await fetch("https://api.themoviedb.org/3/discover/movie?api_key=acef416ba094cca22bc2cb7888b92b61");
+  static async get(page) {
+    const data = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=acef416ba094cca22bc2cb7888b92b61&page=${page}`);
     const res = await data.json();
     return res.results;
   }
@@ -11,8 +11,8 @@ class API {
     return res;
   }
 
-  static async search(query) {
-    const data = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=acef416ba094cca22bc2cb7888b92b61&query=${query}`);
+  static async search(query, page) {
+    const data = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=acef416ba094cca22bc2cb7888b92b61&query=${query}&page=${page}`);
     const res = await data.json();
     return res.results;
   }
