@@ -10,21 +10,23 @@ function Search() {
   const query = searchParams.get("q");
 
   useEffect(() => {
-    async function fetchData() {
-      if (!query) {
-        return;
-      }
-      try {
-        const data = await API.search(query);
-        if (data.length === 0) {
-          fetchData();
+    setTimeout(() => {
+      async function fetchData() {
+        if (!query) {
+          return;
         }
-        setMovies(data);
-      } catch (error) {
-        console.error("Erro ao buscar filmes:", error);
+        try {
+          const data = await API.search(query);
+          if (data.length === 0) {
+            fetchData();
+          }
+          setMovies(data);
+        } catch (error) {
+          console.error("Erro ao buscar filmes:", error);
+        }
       }
-    }
-    fetchData();
+      fetchData();
+    }, 400);
   }, [query]);
 
   return (
