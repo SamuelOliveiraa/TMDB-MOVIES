@@ -24,7 +24,7 @@ function Movies() {
   console.log(movie);
 
   return (
-    <div className="flex items-center justify-center max-w-5xl mx-auto md:mt-20 mt-10 md:pb-20 p-0">
+    <div className="flex items-center justify-center max-w-5xl mx-auto md:mt-20 mt-10 md:pb-20 pb-10">
       {movie ? (
         <div className="w-full ">
           <div className="mb-10 hidden md:block">
