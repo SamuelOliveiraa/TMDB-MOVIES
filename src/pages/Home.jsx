@@ -28,7 +28,7 @@ function Home() {
 
   return (
     <div className="max-w-7xl mx-auto pb-20">
-      <h1 className="my-12 text-4xl text-center">Melhores Filmes</h1>
+      <h1 className="my-12 text-4xl text-center">Best Movies</h1>
 
       <div className="grid grid-cols-auto-fit-minmax gap-x-10 gap-y-12 px-4 justify-items-center">
         {movies.length !== 0 ? movies.map(movie => <MovieCard data={movie} key={movie.id} />) : <CircularProgress />}

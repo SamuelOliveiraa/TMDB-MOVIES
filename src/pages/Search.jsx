@@ -39,11 +39,12 @@ function Search() {
     setCurrentPage(value);
     setMovies([]);
   }
+  console.log(movies)
 
   return (
     <>
       <h1 className="text-3xl text-center my-10">
-        Resultados para: <span className="text-yellow-300 uppercase ">{query}</span>
+        Results for: <span className="text-yellow-300 uppercase ">{query}</span>
       </h1>
       {movies.length === 0 ? (
         <div className="flex items-center justify-center">{notFound ? <NotFound /> : <CircularProgress />}</div>

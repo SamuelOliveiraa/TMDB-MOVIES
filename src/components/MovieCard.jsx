@@ -14,7 +14,7 @@ function MovieCard(data) {
           to={`/TMDB-MOVIES/movie/${id}`}
           className="block text-center mt-3 p-3 bg-yellow-400 w-full rounded-sm text-black border-2 transition-all duration-200 ease-in-out hover:bg-transparent hover:text-yellow-400 border-yellow-400"
         >
-          Detalhes
+          Details
         </Link>
       </div>
     </div>

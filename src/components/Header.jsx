@@ -23,20 +23,20 @@ function Header() {
   }
 
   return (
-    <div className="bg-zinc-900 px-6">
-      <header className="max-w-7xl mx-auto py-4 flex items-center justify-between">
+    <div className="bg-zinc-900 px-3 md:px-6 sticky top-0">
+      <header className="max-w-7xl mx-auto py-4 flex items-center justify-between gap-2">
         <nav>
-          <Link to="/TMDB-MOVIES" className="flex items-center gap-1 text-2xl text-yellow-300">
+          <Link to="/TMDB-MOVIES" className="flex items-center gap-1 md:text-2xl text-lg text-yellow-300">
             <BiCameraMovie />
             <span>MoviesLib</span>
           </Link>
         </nav>
-        <form className="flex max-w-44 gap-1" onSubmit={handleSubmit}>
+        <form className="flex max-w-40 md:max-w-44 gap-1" onSubmit={handleSubmit}>
           <input
             type="text"
             value={inputValue}
             onChange={e => handleChange(e)}
-            placeholder="Busque um filme"
+            placeholder="Search a movie"
             name="movie"
             className="w-full rounded-sm text-black py-1 px-2 text-sm"
           />
