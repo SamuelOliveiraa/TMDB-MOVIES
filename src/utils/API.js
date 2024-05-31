@@ -14,8 +14,7 @@ class API {
   static async search(query, page) {
     const data = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=acef416ba094cca22bc2cb7888b92b61&query=${query}&page=${page}`);
     const res = await data.json();
-    const sortedResults = res.results.sort((a, b) => b.popularity - a.popularity);
-    return sortedResults;
+    return res;
   }
 }
 

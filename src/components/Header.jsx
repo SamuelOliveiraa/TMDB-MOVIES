@@ -23,7 +23,7 @@ function Header() {
   }
 
   return (
-    <div className="bg-zinc-900 px-3 md:px-6 sticky top-0">
+    <div className="bg-zinc-900 px-3 md:px-6 sticky top-0 z-10">
       <header className="max-w-7xl mx-auto py-4 flex items-center justify-between gap-2">
         <nav>
           <Link to="/TMDB-MOVIES" className="flex items-center gap-1 md:text-2xl text-lg text-yellow-300">

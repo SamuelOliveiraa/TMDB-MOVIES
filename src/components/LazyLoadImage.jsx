@@ -15,7 +15,7 @@ function ImageComponent({ src }) {
         <>
           {!isLoaded && <div className={`w-full h-full bg-zinc-700 animate-pulse ${isLoaded ? "block" : "none"}`} />}
           <img
-            src={`https://image.tmdb.org/t/p/w342${src}`}
+            src={`https://image.tmdb.org/t/p/original${src}`}
             alt="Descrição da imagem"
             onLoad={handleImageLoad}
             className={`${isLoaded ? "block" : "hidden"} w-full h-full`}
@@ -23,7 +23,7 @@ function ImageComponent({ src }) {
         </>
       ) : (
         <>
-          <div className="w-full h-full text-yellow-300 text-6xl flex items-center justify-center">
+          <div className="w-full h-full bg-zinc-600 text-yellow-300 text-6xl flex items-center justify-center">
             <LuImageOff />
           </div>
         </>

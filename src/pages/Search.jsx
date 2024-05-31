@@ -11,35 +11,43 @@ function Search() {
   const query = searchParams.get("q");
   const [currentPage, setCurrentPage] = useState(1);
   const [notFound, setNotFound] = useState(null);
+  const [totalOfPages, setTotalOfPages] = useState(1);
 
   useEffect(() => {
     setMovies([]);
     setNotFound(null);
-    setTimeout(() => {
-      async function fetchData() {
-        if (!query) {
+    async function fetchData() {
+      if (!query) {
+        return;
+      }
+      try {
+        let data = await API.search(query, currentPage);
+
+        if (data.length === 0) {
+          setNotFound(true);
           return;
         }
-        try {
-          const data = await API.search(query, currentPage);
-          if (data.length === 0) {
-            setNotFound(true);
-            return;
-          }
-          setMovies(data);
-        } catch (error) {
-          console.error("Erro ao buscar filmes:", error);
-        }
+        const alMoviesSorted = data.results.sort((a, b) => b.popularity - a.popularity);
+        setTotalOfPages(data.total_pages);
+        setMovies(alMoviesSorted);
+      } catch (error) {
+        console.error("Erro ao buscar filmes:", error);
       }
-      fetchData();
-    }, 600);
+    }
+    fetchData();
   }, [query, currentPage]);
+
+  useEffect(() => {
+    if (totalOfPages < currentPage) {
+      setCurrentPage(1);
+    }
+  }, [totalOfPages]);
 
   function handlePageChange(e, value) {
     setCurrentPage(value);
     setMovies([]);
   }
-  console.log(movies)
+  console.log(movies);
 
   return (
     <>
@@ -56,7 +64,7 @@ function Search() {
             </div>
           </div>
           <div className="flex items-center justify-center mt-8 mb-12">
-            <Pagination count={6} currentPage={currentPage} onChange={handlePageChange} color="primary" />
+            <Pagination count={totalOfPages} page={currentPage} onChange={handlePageChange} color="primary" />
           </div>
         </>
       )}

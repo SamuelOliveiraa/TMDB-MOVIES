@@ -41,18 +41,16 @@ function Movies() {
           </button>
 
           <div className="overflow-hidden mb-10 hidden opacity-60 md:block w-11/12 h-528 mx-auto rounded-3xl">
-            <LazyLoadImage src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} />
+            <LazyLoadImage src={`${movie.backdrop_path === null ? movie.poster_path : movie.backdrop_path}`} />
           </div>
           <div className="md:max-w-4xl grid gap-8 mx-auto md:grid-cols-custom-1fr-2fr md:px-12 px-2 grid-cols-1 md:mt-16">
             <div className="md:w-full w-11/12 mx-auto rounded-3xl h-full overflow-hidden">
-              <LazyLoadImage src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} />
+              <LazyLoadImage src={`${movie.poster_path}`} />
             </div>
             <div className="md:max-w-md w-full px-8 md:p-0">
               <h2 className="text-2xl bold">{movie.original_title}</h2>
               <p className="opacity-50 font-light leading-relaxed my-5 text-xl">{movie.overview}</p>
-              <div className="bg-zinc-800 text-yellow-300 my-4 w-14 rounded-md px-1 py-px">
-                <ShowStars stars={movie.vote_average.toFixed(1)} />
-              </div>
+              <ShowStars stars={movie.vote_average.toFixed(1)} />
               <p className="flex flex-col gap-2 opacity-80 mb-3">
                 <span className="opacity-50">Type</span>
                 Movie

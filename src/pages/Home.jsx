@@ -9,7 +9,6 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    setTimeout(() => {
       async function fetchData() {
         const data = await API.get(currentPage);
         if (data.length === 0) {
@@ -18,7 +17,6 @@ function Home() {
         setMovies(data);
       }
       fetchData();
-    }, 600);
   }, [currentPage]);
 
   function handlePageChange(e, value) {
@@ -34,7 +32,7 @@ function Home() {
         {movies.length !== 0 ? movies.map(movie => <MovieCard data={movie} key={movie.id} />) : <CircularProgress />}
       </div>
       <div className="flex items-center justify-center mt-12">
-        <Pagination count={6} page={currentPage} onChange={handlePageChange} color="primary" />
+        <Pagination count={20} page={currentPage} onChange={handlePageChange} color="primary" />
       </div>
     </div>
   );
