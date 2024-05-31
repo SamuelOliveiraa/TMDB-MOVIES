@@ -14,7 +14,7 @@ function Header() {
       return;
     }
 
-    navigate(`/search?q=${inputValue}`);
+    navigate(`/TMDB-MOVIES/search?q=${inputValue}`);
     setInputValue("");
   }
 

@@ -3,15 +3,18 @@ import { useSearchParams } from "react-router-dom";
 import API from "../utils/API";
 import { CircularProgress, Pagination } from "@mui/material";
 import MovieCard from "../components/MovieCard";
+import NotFound from "./NotFound";
 
 function Search() {
   const [searchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const query = searchParams.get("q");
   const [currentPage, setCurrentPage] = useState(1);
+  const [notFound, setNotFound] = useState(null);
 
   useEffect(() => {
     setMovies([]);
+    setNotFound(null);
     setTimeout(() => {
       async function fetchData() {
         if (!query) {
@@ -20,7 +23,8 @@ function Search() {
         try {
           const data = await API.search(query, currentPage);
           if (data.length === 0) {
-            fetchData();
+            setNotFound(true);
+            return;
           }
           setMovies(data);
         } catch (error) {
@@ -41,31 +45,20 @@ function Search() {
       <h1 className="text-3xl text-center my-10">
         Resultados para: <span className="text-yellow-300 uppercase ">{query}</span>
       </h1>
-      <div className="max-w-7xl mx-auto pb-6">
-        <div className="grid grid-cols-auto-fit-minmax gap-16 px-4 justify-items-center">
-          {movies.length !== 0 ? movies.map(movie => <MovieCard data={movie} key={movie.id} />) : <CircularProgress />}
-        </div>
-      </div>
-      <div className="flex items-center justify-center mt-8 mb-12">
-        <Pagination
-          count={6}
-          currentPage={currentPage}
-          onChange={handlePageChange}
-          sx={{
-            "& .Mui-selected": {
-              backgroundColor: "#facc15", // Cor de fundo para página selecionada
-              color: "#000" // Cor do texto para página selecionada
-            },
-            "& .MuiPaginationItem-ellipsis": {
-              backgroundColor: "#facc15", // Cor de fundo para elipse
-              color: "#e5e5e7" // Cor do texto para elipse
-            },
-            "& .MuiButtonBase-root": {
-              color: "#e5e5e7" // Cor do texto para os botões de página não selecionados
-            }
-          }}
-        />
-      </div>
+      {movies.length === 0 ? (
+        <div className="flex items-center justify-center">{notFound ? <NotFound /> : <CircularProgress />}</div>
+      ) : (
+        <>
+          <div className="max-w-7xl mx-auto pb-6">
+            <div className="grid grid-cols-auto-fit-minmax gap-x-10 gap-y-12 px-4 justify-items-center">
+              {movies.length !== 0 ? movies.map(movie => <MovieCard data={movie} key={movie.id} />) : <CircularProgress />}
+            </div>
+          </div>
+          <div className="flex items-center justify-center mt-8 mb-12">
+            <Pagination count={6} currentPage={currentPage} onChange={handlePageChange} color="primary" />
+          </div>
+        </>
+      )}
     </>
   );
 }

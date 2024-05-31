@@ -23,35 +23,18 @@ function Home() {
 
   function handlePageChange(e, value) {
     setCurrentPage(value);
-    setMovies([])
+    setMovies([]);
   }
 
   return (
     <div className="max-w-7xl mx-auto pb-20">
       <h1 className="my-12 text-4xl text-center">Melhores Filmes</h1>
 
-      <div className="grid grid-cols-auto-fit-minmax gap-16 px-4 justify-items-center">
+      <div className="grid grid-cols-auto-fit-minmax gap-x-10 gap-y-12 px-4 justify-items-center">
         {movies.length !== 0 ? movies.map(movie => <MovieCard data={movie} key={movie.id} />) : <CircularProgress />}
       </div>
       <div className="flex items-center justify-center mt-12">
-        <Pagination
-          count={6}
-          currentPage={currentPage}
-          onChange={handlePageChange}
-          sx={{
-            "& .Mui-selected": {
-              backgroundColor: "#facc15", // Cor de fundo para página selecionada
-              color: "#000" // Cor do texto para página selecionada
-            },
-            "& .MuiPaginationItem-ellipsis": {
-              backgroundColor: "#facc15", // Cor de fundo para elipse
-              color: "#e5e5e7" // Cor do texto para elipse
-            },
-            "& .MuiButtonBase-root": {
-              color: "#e5e5e7" // Cor do texto para os botões de página não selecionados
-            }
-          }}
-        />
+        <Pagination count={6} page={currentPage} onChange={handlePageChange} color="primary" />
       </div>
     </div>
   );
