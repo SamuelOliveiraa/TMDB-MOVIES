@@ -43,7 +43,7 @@ function Movies() {
             <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt="" className="w-11/12 mx-auto rounded-3xl opacity-60" />
           </div>
           <div className="md:max-w-4xl grid gap-8 mx-auto md:grid-cols-custom-1fr-2fr md:px-12 px-2 grid-cols-1 md:mt-16">
-          <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" className="md:w-full w-11/12 mx-auto rounded-3xl h-full" />
+            <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" className="md:w-full w-11/12 mx-auto rounded-3xl h-full" />
             <div className="md:max-w-md w-full px-8 md:p-0">
               <h2 className="text-2xl bold">{movie.original_title}</h2>
               <p className="opacity-50 font-light leading-relaxed my-5 text-xl">{movie.overview}</p>
@@ -64,7 +64,7 @@ function Movies() {
               </p>
               <p className="flex flex-col gap-2 opacity-80 mb-3">
                 <span className="opacity-50">Genres</span>
-                {movie.genres.map(genre => `${genre.name}, `)}
+                {movie.genres.map(genre => genre.name).join(", ")}
               </p>
             </div>
           </div>
