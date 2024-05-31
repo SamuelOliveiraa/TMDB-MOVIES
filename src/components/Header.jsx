@@ -38,9 +38,9 @@ function Header() {
             onChange={e => handleChange(e)}
             placeholder="Search a movie"
             name="movie"
-            className="w-full rounded-sm text-black py-1 px-2 text-sm"
+            className="w-full rounded-sm text-black py-1 px-2 text-sm "
           />
-          <button className="bg-yellow-300 p-1 rounded-sm text-black text-xl">
+          <button className="bg-yellow-300 p-1 rounded-sm text-black text-xl   border-yellow-300 border-2 hover:bg-transparent hover:text-yellow-300 transition-all duration-200 ease-in-out">
             <IoSearchSharp />
           </button>
         </form>

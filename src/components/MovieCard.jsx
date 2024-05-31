@@ -7,7 +7,9 @@ function MovieCard(data) {
   return (
     <div className="p-2 py-4 bg-zinc-800 items-center flex flex-col w-270 transition-all ease-in-out">
       <div className="w-full">
-        <ImgContainer src={poster_path} />
+        <div className="w-248 h-372">
+          <ImgContainer src={poster_path} />
+        </div>
         <h2 className="my-3 h-12 flex items-center justify-center text-center">{original_title}</h2>
         <ShowStars stars={vote_average.toFixed(1)} />
         <Link
